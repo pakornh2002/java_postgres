@@ -17,22 +17,22 @@ public class Main {
             conn = DriverManager.getConnection(url, user, password);
             
             // SQL statement to insert data into test_table
-            String sql = "UPDATE test_table SET id = ? WHERE name = ?";
+            String sql = "INSERT INTO test_table (id, name) VALUES (?, ?)";
             
             // Prepare the SQL statement
             pstmt = conn.prepareStatement(sql);
             
             // Set parameters for the statement
-            pstmt.setInt(1, 10);         
-            pstmt.setString(2, "Hello World");  
+            pstmt.setInt(1, 1);         
+            pstmt.setString(2, "Pakorn Skunsongbunsiri");  
             
             // Execute the SQL statement
             int rowsAffected = pstmt.executeUpdate();
             
             if (rowsAffected > 0) {
-                System.out.println("Data updated successfully");
+                System.out.println("Data inserted successfully");
             } else {
-                System.out.println("No rows affected, updating failed");
+                System.out.println("No rows affected, insertion failed");
             }
             
         } catch (SQLException e) {
